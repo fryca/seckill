@@ -7,7 +7,6 @@ import yw.seckill.entity.Order;
 import yw.seckill.service.OrderService;
 import yw.seckill.dto.CreateOrderRequestDTO;
 import org.springframework.validation.annotation.Validated;
-import yw.seckill.dto.QualifyRequestDTO;
 
 @RestController
 @RequestMapping("/seckill/order")

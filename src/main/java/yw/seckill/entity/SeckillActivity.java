@@ -8,16 +8,19 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-@TableName("t_order")
-public class Order {
+@TableName("t_seckill_activity")
+public class SeckillActivity {
     @TableId(type = IdType.AUTO)
     private Long id;
-    private Long userId;
-    private Long activityId;
+    private String name;
+    private String description;
     private Long productId;
-    private String orderNo;
-    private BigDecimal amount;
-    private Integer status; // 0-待支付 1-已支付 2-已取消 3-已退款
+    private BigDecimal seckillPrice;
+    private Integer seckillStock;
+    private Integer originalStock;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private Integer status; // 0-未开始 1-进行中 2-已结束 3-已取消
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 } 
