@@ -58,3 +58,45 @@ curl -X POST "http://localhost:8080/seckill/qualify?signature=test123" \
   }'
 ```
 
+### 分布式锁监控接口
+
+#### 1. 测试基本锁功能
+```bash
+curl -X POST "http://localhost:8080/api/lock-monitor/test-lock?lockKey=test-lock-1&waitTime=5&leaseTime=10"
+```
+
+#### 2. 测试看门狗机制（自动续期）
+```bash
+curl -X POST "http://localhost:8080/api/lock-monitor/test-watchdog?lockKey=test-watchdog-1&waitTime=5"
+```
+
+#### 3. 并发测试锁监控
+```bash
+curl -X POST "http://localhost:8080/api/lock-monitor/test-concurrent?lockKey=test-concurrent-1&threadCount=5"
+```
+
+#### 4. 获取锁竞争统计
+```bash
+curl -X GET "http://localhost:8080/api/lock-monitor/competition/test-lock-1"
+```
+
+#### 5. 获取所有锁统计信息
+```bash
+curl -X GET "http://localhost:8080/api/lock-monitor/statistics"
+```
+
+#### 6. 获取锁信息
+```bash
+curl -X GET "http://localhost:8080/api/lock-monitor/lock-info/test-lock-1"
+```
+
+#### 7. 强制释放锁
+```bash
+curl -X POST "http://localhost:8080/api/lock-monitor/force-unlock/test-lock-1"
+```
+
+#### 8. 清理过期统计信息
+```bash
+curl -X POST "http://localhost:8080/api/lock-monitor/cleanup"
+```
+

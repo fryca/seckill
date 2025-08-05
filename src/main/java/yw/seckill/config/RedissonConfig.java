@@ -46,6 +46,10 @@ public class RedissonConfig {
                 .setSubscriptionConnectionMinimumIdleSize(1)
                 .setSubscriptionConnectionPoolSize(50);
 
+        // 配置锁的看门狗机制
+        config.setLockWatchdogTimeout(30000); // 30秒，看门狗超时时间
+        config.setKeepPubSubOrder(true); // 保持发布订阅顺序
+
         return Redisson.create(config);
     }
 } 
